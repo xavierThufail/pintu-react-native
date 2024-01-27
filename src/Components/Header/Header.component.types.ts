@@ -8,3 +8,7 @@ export type HeaderProps = {
   percentage: string;
   currencyName: string;
 };
+
+export type HeaderContentProps = {
+  onPress: () => void;
+} & HeaderProps;

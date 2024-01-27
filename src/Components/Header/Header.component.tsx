@@ -2,7 +2,8 @@ import React from 'react';
 import { Text, View, TouchableOpacity, Modal } from 'react-native';
 
 import styles from './Header.component.styles';
-import type { HeaderProps, ModalHelpProps } from './Header.component.types';
+import type { HeaderProps, ModalHelpProps, HeaderContentProps } from './Header.component.types';
+import { HEADER } from '../../Constants';
 
 const BackgroundTransparent = () => (
   <View style={styles.backgroundTransparent}/>
@@ -10,9 +11,9 @@ const BackgroundTransparent = () => (
 
 const ModalLabel = () => (
   <View style={styles.flexRowSpaceBetweenAlignCenter}>
-    <Text style={styles.fontSmall}>Sell Price</Text>
-    <Text style={[styles.fontSmall, styles.bold]}>Mid Price</Text>
-    <Text style={styles.fontSmall}>Buy Price</Text>
+    <Text style={styles.fontSmall}>{HEADER.MODAL.LABEL.SELL_PRICE}</Text>
+    <Text style={[styles.fontSmall, styles.bold]}>{HEADER.MODAL.LABEL.MID_PRICE}</Text>
+    <Text style={styles.fontSmall}>{HEADER.MODAL.LABEL.BUY_PRICE}</Text>
   </View>
 );
 
@@ -27,14 +28,14 @@ const ModalLine = () => (
 
 const ModalContent = () => (
   <View style={[styles.flexCentered, styles.modalContent]}>
-    <Text style={[styles.fontStandard, styles.bold]}>The Price Shown is a Mid Price</Text>
-    <Text style={[styles.fontStandard, styles.textCenter]}>Mid Price is not buy nor selling price. Final buy and selling price will be calculated when you're making transactions.</Text>
+    <Text style={[styles.fontStandard, styles.bold]}>{HEADER.MODAL.CONTENT.TITLE}</Text>
+    <Text style={[styles.fontStandard, styles.textCenter]}>{HEADER.MODAL.CONTENT.DESCRIPTION}</Text>
   </View>
 );
 
 const ModalButton = ({ onPress }: ModalHelpProps) => (
   <TouchableOpacity onPress={onPress} style={[styles.flexCentered, styles.buttonModal]}>
-    <Text style={[styles.fontStandard, styles.bold, styles.whiteColor]}>Ok, I Understand</Text>
+    <Text style={[styles.fontStandard, styles.bold, styles.whiteColor]}>{HEADER.MODAL.BUTTON.OK}</Text>
   </TouchableOpacity>
 );
 
@@ -80,7 +81,7 @@ const Percentage = ({ percentage }: HeaderProps) => {
 
 const HeaderPrice = (props: HeaderProps) => (
   <View>
-    <Text style={[styles.fontSmall, styles.colorSecondary]}>{`${props.currencyName} Price`}</Text>
+    <Text style={[styles.fontSmall, styles.colorSecondary]}>{`${props.currencyName} ${HEADER.PRICE}`}</Text>
     <View style={styles.containerPrice}>
       <Text style={[styles.fontHeadline, styles.bold]}>{props.price}</Text>
       <Percentage {...props} />
@@ -94,8 +95,8 @@ const QuestionIcon = () => (
   </View>
 );
 
-const HeaderContent = (props: HeaderProps & ModalHelpProps) => {
-  const { open: _, onPress, ...restProps } = props;
+const HeaderContent = (props: HeaderContentProps) => {
+  const { onPress, ...restProps } = props;
 
   return (
     <TouchableOpacity onPress={onPress} style={[styles.flexRowSpaceBetweenAlignCenter, styles.containerHeader]}>
@@ -114,7 +115,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <React.Fragment>
-      <HeaderContent {...props} open={visible} onPress={openModal} />
+      <HeaderContent {...props} onPress={openModal} />
       <ModalHelp open={visible} onPress={closeModal} />
     </React.Fragment>
   );

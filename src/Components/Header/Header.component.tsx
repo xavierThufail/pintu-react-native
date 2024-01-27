@@ -80,7 +80,7 @@ const Percentage = ({ percentage }: HeaderProps) => {
 
 const HeaderPrice = (props: HeaderProps) => (
   <View>
-    <Text style={[styles.fontSmall, styles.colorSecondary]}>Bitcoin Price</Text>
+    <Text style={[styles.fontSmall, styles.colorSecondary]}>{`${props.currencyName} Price`}</Text>
     <View style={styles.containerPrice}>
       <Text style={[styles.fontHeadline, styles.bold]}>{props.price}</Text>
       <Percentage {...props} />

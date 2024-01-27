@@ -7,7 +7,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar />
-      <Header price="Rp 1.000.000.000" percentage="10" />
+      <Header currencyName='Bitcoin' price="Rp 1.000.000.000" percentage="10" />
       <Text>Open up App.js to start working on your app!</Text>
     </View>
   );

@@ -6,4 +6,5 @@ export type ModalHelpProps = {
 export type HeaderProps = {
   price: string;
   percentage: string;
+  currencyName: string;
 };

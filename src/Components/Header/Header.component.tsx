@@ -2,8 +2,9 @@ import React from 'react';
 import { Text, View, TouchableOpacity, Modal } from 'react-native';
 
 import styles from './Header.component.styles';
-import type { HeaderProps, ModalHelpProps, HeaderContentProps } from './Header.component.types';
 import { HEADER } from '../../Constants';
+
+import type { HeaderProps, ModalHelpProps, HeaderContentProps } from './Header.component.types';
 
 const BackgroundTransparent = () => (
   <View style={styles.backgroundTransparent}/>

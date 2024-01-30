@@ -1,33 +1,9 @@
 import { StyleSheet } from 'react-native';
 
+import sharedStyles from '../../Shared/styles';
+
 const styles = StyleSheet.create({
-  blueColor: {
-    color: '#0B67F3',
-  },
-  whiteColor: {
-    color: 'white',
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-  weight500: {
-    fontWeight: '500',
-  },
-  colorSecondary: {
-    color: '#929396',
-  },
-  fontHeadline: {
-    fontSize: 20,
-    lineHeight: 22,
-  },
-  fontSmall: {
-    fontSize: 10,
-    lineHeight: 14,
-  },
-  fontStandard: {
-    fontSize: 12,
-    lineHeight: 14,
-  },
+  ...sharedStyles,
   triangle: {
     width: 0,
     height: 0,
@@ -60,17 +36,6 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
   },
-  flexRowSpaceBetweenAlignCenter: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  flexCentered: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   containerHeader: {
     padding: 10,
     width: '100%',
@@ -86,10 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 5,
     alignItems: 'flex-end',
-  },
-  fullScreen: { 
-    width: '100%',
-    height: '100%',
   },
   containerModal: {
     width: '90%',

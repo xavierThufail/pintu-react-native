@@ -1,17 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View , StatusBar} from 'react-native';
+import { StyleSheet, View , StatusBar as RNStatusBar, SafeAreaView } from 'react-native';
+import { CandlestickChart } from 'react-native-wagmi-charts';
 
-import { Header } from './src/Components';
+import { Header, Chart } from './src/Components';
+import { useApp } from './useApp';
 
 export default function App() {
+  const { data, intervalChart, handleIntervalChartChange } = useApp();
+
   return (
-    <View style={styles.container}>
-      <StatusBar />
-      <Header currencyName='Bitcoin' price="Rp 1.000.000.000" percentage="10" />
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <CandlestickChart.Provider data={data}>
+      <View style={styles.container}>
+        <View style={styles.statusBar}>
+          <SafeAreaView>
+            <RNStatusBar translucent />
+          </SafeAreaView>
+        </View>
+        <Header currencyName='Bitcoin' price="Rp 1.000.000.000" percentage="10" />
+        <Chart interval={intervalChart} handleIntervalChartChange={handleIntervalChartChange} />
+      </View>
+    </CandlestickChart.Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -21,4 +31,8 @@ const styles = StyleSheet.create({
     margin: 0,
     position: 'relative',
   },
+  statusBar: {
+    backgroundColor: 'red',
+    height: RNStatusBar.currentHeight,
+  }
 });
